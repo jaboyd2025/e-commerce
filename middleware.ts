@@ -1,6 +1,6 @@
-import { auth } from "@/auth"
+import { middleware } from "./middleware.config"
 
-export default auth((req) => {
+export default middleware((req) => {
   const isLoggedIn = !!req.auth
   const isOnAdmin = req.nextUrl.pathname.startsWith("/admin")
   const isOnAuth = req.nextUrl.pathname.startsWith("/auth")
