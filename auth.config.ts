@@ -7,10 +7,10 @@ declare module 'next-auth' {
 }
 
 export const authConfig = {
-  providers: [],
   session: {
     strategy: 'jwt',
   },
+  providers: [],
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
