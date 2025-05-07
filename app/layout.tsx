@@ -1,15 +1,14 @@
+'use client'
+
+import { Inter } from 'next/font/google'
+import { Providers } from '@/components/providers'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
+import { Toaster } from '@/components/ui/sonner'
+import { cn } from '@/lib/utils'
 import './globals.css'
-import { Providers } from '@/components/providers'
-import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
-
-export const metadata = {
-  title: 'E-Commerce',
-  description: 'Your one-stop shop for all your needs',
-}
 
 export default function RootLayout({
   children,
@@ -17,14 +16,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn(inter.className, 'min-h-screen bg-background font-sans antialiased')}>
         <Providers>
           <div className="relative flex min-h-screen flex-col">
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
           </div>
+          <Toaster />
         </Providers>
       </body>
     </html>

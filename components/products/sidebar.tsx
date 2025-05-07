@@ -3,7 +3,8 @@
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Slider } from '@/components/ui/slider'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
+import { Label } from '@/components/ui/label'
 
 interface Category {
   id: string
@@ -31,6 +32,15 @@ export function Sidebar({ categories }: SidebarProps) {
     setPriceRange([minPrice, maxPrice])
   }, [minPrice, maxPrice])
 
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams.toString())
+      params.set(name, value)
+      return params.toString()
+    },
+    [searchParams]
+  )
+
   const updateFilters = (updates: Record<string, string | string[]>) => {
     const params = new URLSearchParams(searchParams.toString())
     
@@ -57,11 +67,9 @@ export function Sidebar({ categories }: SidebarProps) {
     router.push(`/products?${params.toString()}`)
   }
 
-  const handleCategoryChange = (categoryId: string, checked: boolean) => {
-    const newCategories = checked
-      ? [...currentCategories, categoryId]
-      : currentCategories.filter(id => id !== categoryId)
-    updateFilters({ categories: newCategories })
+  const handleCategoryChange = (categoryId: string) => {
+    const newQueryString = createQueryString('category', categoryId)
+    router.push(`/products?${newQueryString}`)
   }
 
   const handlePriceChange = (value: number[]) => {
@@ -84,17 +92,10 @@ export function Sidebar({ categories }: SidebarProps) {
             <div key={category.id} className="flex items-center space-x-2">
               <Checkbox
                 id={category.id}
-                checked={currentCategories.includes(category.id)}
-                onCheckedChange={(checked) => 
-                  handleCategoryChange(category.id, checked as boolean)
-                }
+                checked={searchParams.get('category') === category.id}
+                onCheckedChange={() => handleCategoryChange(category.id)}
               />
-              <label
-                htmlFor={category.id}
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              >
-                {category.name}
-              </label>
+              <Label htmlFor={category.id}>{category.name}</Label>
             </div>
           ))}
         </div>
