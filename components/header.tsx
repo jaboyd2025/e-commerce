@@ -16,10 +16,10 @@ export function Header() {
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <span className="font-bold">E-Commerce</span>
           </Link>
+          <Link href="/products" className="mr-6 flex items-center space-x-2 text-sm font-medium transition-colors hover:text-foreground/80">
+            Products
+          </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
-            <Link href="/products" className="transition-colors hover:text-foreground/80">
-              Products
-            </Link>
             <Link href="/categories" className="transition-colors hover:text-foreground/80">
               Categories
             </Link>

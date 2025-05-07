@@ -19,10 +19,9 @@ const getImageUrl = (imageUrl: string | undefined) => {
     return imageUrl
   }
   
-  // If it's a relative path, ensure it starts with a forward slash
-  // and remove any double slashes
-  const cleanPath = imageUrl.startsWith('/') ? imageUrl : `/${imageUrl}`
-  return cleanPath.replace(/\/+/g, '/')
+  // Clean the path by removing extra spaces and ensuring proper slashes
+  const cleanPath = imageUrl.trim().replace(/\s+/g, '')
+  return cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`
 }
 
 export default async function LatestProducts() {
