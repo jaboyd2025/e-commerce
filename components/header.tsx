@@ -1,10 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import { Search, ShoppingCart, User } from 'lucide-react'
+import { Search, User } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useSession, signOut } from 'next-auth/react'
+import { CartDrawer } from '@/app/components/cart/cart-drawer'
 
 export function Header() {
   const { data: session } = useSession()
@@ -37,12 +38,7 @@ export function Header() {
             </div>
           </div>
           <nav className="flex items-center space-x-2">
-            <Link href="/cart">
-              <Button variant="ghost" size="icon">
-                <ShoppingCart className="h-5 w-5" />
-                <span className="sr-only">Cart</span>
-              </Button>
-            </Link>
+            <CartDrawer />
             {session ? (
               <div className="flex items-center space-x-2">
                 <Link href="/dashboard">

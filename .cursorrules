@@ -95,7 +95,7 @@
   - [ ] Related products section:
     - [ ] Show products from same category
     - [ ] Product card carousel
-- [ ] Shopping cart:
+- [x] Shopping cart:
   - Add/remove items
   - Update quantities
   - Cart persistence
