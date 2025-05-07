@@ -1,0 +1,8 @@
+lib/generated/**/*
+**/generated/**/*
+**/prisma/generated/**/*
+**/prisma/client/**/*
+**/prisma/runtime/**/*
+**/prisma/wasm.js
+**/prisma/react-native.js
+prisma/seed.ts 
