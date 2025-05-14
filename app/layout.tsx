@@ -1,4 +1,5 @@
-import type { Metadata } from 'next'
+'use client'
+
 import { Inter } from 'next/font/google'
 import { Providers } from '@/components/providers'
 import { Header } from '@/components/header'
@@ -8,11 +9,6 @@ import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
-  title: 'E-Commerce Store',
-  description: 'Your one-stop shop for all your needs',
-}
-
 export default function RootLayout({
   children,
 }: {
@@ -21,10 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta
-          name="format-detection"
-          content="telephone=no, date=no, email=no, address=no"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=1.0" />
       </head>
       <body className={cn(inter.className, 'min-h-screen bg-background font-sans antialiased')}>
         <Providers>

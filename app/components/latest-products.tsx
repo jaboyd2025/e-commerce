@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import { ProductImage } from '@/components/product-image'
 import { ProductCard } from './products/product-card'
 
 interface Product {

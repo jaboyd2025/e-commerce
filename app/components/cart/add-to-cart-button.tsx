@@ -24,20 +24,17 @@ export function AddToCartButton({ product, quantity = 1, className }: AddToCartB
   const handleAddToCart = async () => {
     try {
       setIsLoading(true)
-      const item = {
+      const item: CartItem = {
         id: product.id,
         name: product.name,
         price: product.price,
-        image: product.images[0]
+        image: product.images[0],
+        quantity
       }
-      addItem(item, quantity)
-      toast.success('Added to cart', {
-        description: `${product.name} has been added to your cart.`
-      })
+      addItem(item)
+      toast.success('Added to cart')
     } catch (error) {
-      toast.error('Failed to add to cart', {
-        description: 'Please try again.'
-      })
+      toast.error('Failed to add to cart')
     } finally {
       setIsLoading(false)
     }

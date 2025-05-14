@@ -21,7 +21,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground">
-                  Contact
+                  Contact Us
                 </Link>
               </li>
             </ul>
@@ -80,7 +80,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} E-Commerce. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Fashion Frontier. All rights reserved.</p>
         </div>
       </div>
     </footer>

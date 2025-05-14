@@ -15,7 +15,7 @@ export function Header() {
       <div className="container flex h-16 items-center">
         <div className="mr-4 flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="font-bold">E-Commerce</span>
+            <span className="font-bold">Fashion Frontier</span>
           </Link>
           <Link href="/products" className="mr-6 flex items-center space-x-2 text-sm font-medium transition-colors hover:text-foreground/80">
             Products

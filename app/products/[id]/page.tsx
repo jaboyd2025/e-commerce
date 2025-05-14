@@ -3,9 +3,10 @@ import { notFound } from 'next/navigation'
 import { format } from 'date-fns'
 import { ProductRelated } from '@/components/products/product-related'
 import { ImageGallery } from '@/components/products/image-gallery'
+import { QuantitySelector } from '@/components/products/quantity-selector'
+import { Button } from '@/components/ui/button'
 import { ReviewForm } from '@/components/products/review-form'
 import { StockStatus } from '@/components/products/stock-status'
-import { AddToCartSection } from '@/app/components/products/add-to-cart-section'
 import { auth } from '@/auth'
 
 interface PageProps {
@@ -97,7 +98,17 @@ export default async function ProductPage(props: PageProps) {
           </div>
 
           {/* Add to Cart Section */}
-          <AddToCartSection product={product} />
+          <div className="space-y-4">
+            <div className="flex items-center space-x-4">
+              <QuantitySelector max={product.stock} />
+              <Button 
+                className="flex-1"
+                disabled={product.stock <= 0}
+              >
+                {product.stock <= 0 ? 'Out of Stock' : 'Add to Cart'}
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
 
